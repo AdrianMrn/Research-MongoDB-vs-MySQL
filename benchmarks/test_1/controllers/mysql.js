@@ -5,16 +5,10 @@ var connection = mysql.createConnection({
   password : '',
   database : 'research_vgl_test_1'
 });
- 
-/* connection.connect(); */
 
-exports.saveData = function(data, i, next) {
+exports.saveData = function(data, next) {
     connection.query('INSERT INTO data SET ?', data, function (error, results, fields) {
         if (error) throw error;
-        console.log('MySQL: file added: ', i);
         next();
     });
 }
-
- 
-/* connection.end(); */
